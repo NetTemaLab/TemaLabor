@@ -1,3 +1,6 @@
+CREATE DATABASE `b4us_db`;
+USE DATABASE `b4us_db`;
+
 CREATE TABLE `ServicesTable` (
 	`Id` INT NOT NULL AUTO_INCREMENT,
 	`Location` INT NOT NULL,
