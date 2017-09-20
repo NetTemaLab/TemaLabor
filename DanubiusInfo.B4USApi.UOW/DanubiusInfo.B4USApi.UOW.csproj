@@ -55,5 +55,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DanubiusInfo.B4USApi.Data\DanubiusInfo.B4USApi.Data.csproj">
+      <Project>{faafed71-97fc-47bd-8a43-d822cf7093cc}</Project>
+      <Name>DanubiusInfo.B4USApi.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

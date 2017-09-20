@@ -1,7 +1,6 @@
 ﻿using DanubiusInfo.B4USApi.Data;
 using DanubiusInfo.B4USApi.Data.Model;
 using DanubiusInfo.B4USApi.Providers.Interfaces;
-using System.Data.Entity;
 using System.Linq;
 
 namespace DanubiusInfo.B4USApi.Providers

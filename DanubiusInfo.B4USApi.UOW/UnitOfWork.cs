@@ -1,13 +1,13 @@
-﻿using System;
-using System.Data.Entity;
+﻿using DanubiusInfo.B4USApi.Data;
+using System;
 
 namespace DanubiusInfo.B4USApi.UOW
 {
     public sealed class UnitOfWork : IUnitOfWork
     {
-        private DbContext dbContext;
+        private B4USContext dbContext;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(B4USContext context)
         {
             this.dbContext = context;
         }
@@ -27,7 +27,7 @@ namespace DanubiusInfo.B4USApi.UOW
         {
             if (disposing)
             {
-                if(this.dbContext != null)
+                if (this.dbContext != null)
                 {
                     this.dbContext.Dispose();
                     this.dbContext = null;
