@@ -1,0 +1,80 @@
+CREATE TABLE `ServicesTable` (
+	`Id` INT NOT NULL AUTO_INCREMENT,
+	`Location` INT NOT NULL,
+	`Name` VARCHAR(100) NOT NULL,
+	`Duration` INT NOT NULL,
+	`IsDurationVisible` TINYINT(1) NOT NULL,
+	`Parent` INT NULL,
+	`HasArriveTime` TINYINT(1) NOT NULL DEFAULT 0,
+	`Note` TEXT NULL,
+	`DurationToUser` INT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Locations` (
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`Name` VARCHAR(100) NOT NULL,
+	`Type` TINYINT UNSIGNED NOT NULL DEFAULT 1,
+	`DayStart` INT NOT NULL,
+	`DayEnd` INT NOT NULL,
+	`HasFullTimeTable` TINYINT(1) NOT NULL,
+	`SlotMinutes` INT NULL,
+	`ConcurrentNum` INT NULL,
+	`HasUserViewSlotMinutes` TINYINT(1) NOT NULL DEFAULT 0,
+	`ReadonlyCal` TINYINT(1) NOT NULL DEFAULT 0,
+	`MinTimeReserve` INT NOT NULL DEFAULT 0,
+	`MinTimeModify` INT NOT NULL DEFAULT 0,
+	`WeekendDisabled` TINYINT(1) NOT NULL DEFAULT 0,
+	`WeeksForward` SMALLINT,
+    PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `TimeTables` (
+	`Id` INT NOT NULL AUTO_INCREMENT,
+	`Location` INT NOT NULL,
+	`MorningStart` INT NULL,
+	`MorningEnd` INT NULL,
+	`AfternoonStart` INT NULL,
+	`AfternoonEnd` INT NULL,
+	`IsDayOff` TINYINT(1) NOT NULL,
+	`DayNum` INT NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `ServiceToLoc` (
+	`Id` INT NOT NULL AUTO_INCREMENT,
+	`ServiceId` INT NOT NULL,
+	`LocId` INT NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Reservations` (
+	`Id` INT NOT NULL AUTO_INCREMENT,
+	`Location` INT NOT NULL,
+	`ClientKey` VARCHAR(100) NOT NULL,
+	`ScheduleId` INT NULL,
+	`EventTitle` VARCHAR(400) NOT NULL,
+	`EventStart` DATETIME NOT NULL,
+	`EventEnd` DATETIME NOT NULL,
+	`UserName` VARCHAR(256) NULL,
+	`UserEmail` VARCHAR(256) NULL,
+	`UserTel` VARCHAR(100) NULL,
+	`Comment` TEXT NULL,
+	`LastModified` VARCHAR(20) NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Schedules` (
+	`Id` INT NOT NULL AUTO_INCREMENT,
+	`ServiceToLocId` INT NOT NULL,
+	`StartDate` DATE NOT NULL,
+	`StartTime` INT NOT NULL,
+	`EndDate` DATE NULL,
+	`EndTime` INT NOT NULL,
+	`ConcurrentNum` SMALLINT NOT NULL,
+	`Frequency` INT NOT NULL,
+	`FrequencyNum` INT NOT NULL,
+	`DaysOfWeek` INT NOT NULL,
+	`Note` VARCHAR(100),
+    PRIMARY KEY (`Id`)
+);
