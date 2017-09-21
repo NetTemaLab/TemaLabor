@@ -7,4 +7,4 @@ ALTER TABLE `TimeTables` ADD CONSTRAINT `FK_ForeignKey_TimeTableLocations` FOREI
 ALTER TABLE `ServiceToLoc` ADD CONSTRAINT `FK_ServiceToLoc_Locations` FOREIGN KEY (`LocId`) REFERENCES `Locations`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE `ServiceToLoc` ADD CONSTRAINT `FK_ServiceToLoc_ServicesTable` FOREIGN KEY (`ServiceId`) REFERENCES `ServicesTable`(`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE `Reservations` ADD CONSTRAINT `FK_ForeignKey_Location` FOREIGN KEY (`Location`) REFERENCES `Locations`(`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE `Schedule` ADD CONSTRAINT `FK_ForeignKey_ServiceToLoc` FOREIGN KEY (`ServiceToLocId`) REFERENCES `ServiceToLoc`(`Id`);
+ALTER TABLE `Schedules` ADD CONSTRAINT `FK_ForeignKey_ServiceToLoc` FOREIGN KEY (`ServiceToLocId`) REFERENCES `ServiceToLoc`(`Id`);
