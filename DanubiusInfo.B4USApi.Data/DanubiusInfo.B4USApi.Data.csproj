@@ -58,6 +58,7 @@
     <Compile Include="B4USContext.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Location.cs" />
+    <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

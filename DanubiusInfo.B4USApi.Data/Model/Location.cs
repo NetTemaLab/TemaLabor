@@ -14,5 +14,6 @@ namespace DanubiusInfo.B4USApi.Data.Model
         [Column("Name")]
         public string Name { get; set; }
         public virtual ICollection<Service> Services { get; set; }
+        public virtual ICollection<Reservation> Reservation { get; set; }
     }
 }

@@ -37,7 +37,8 @@ namespace DanubiusInfo.B4USApi.Api
 
             // Add own services
             services.AddTransient<ILocationProvider, LocationProvider>();
-            services.AddTransient<Providers.Interfaces.IServiceProvider, ServiceProvider>();
+            services.AddTransient<IReservationProvider, ReservationProvider>();
+            services.AddTransient<IServiceProvider, ServiceProvider>();
             services.AddTransient<IServiceAndLocationService, ServiceAndLocationService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

@@ -14,8 +14,8 @@ namespace DanubiusInfo.B4USApi.Api.Controllers
         }
 
         [HttpGet]
-        [Route("")]
-        public IActionResult Get()
+        [Route("{location_id:int}/services")]
+        public IActionResult Get(int location_id)
         {
             var result = this.serviceAndLocationService.GetServicesAndLocations();
             return Ok(result);

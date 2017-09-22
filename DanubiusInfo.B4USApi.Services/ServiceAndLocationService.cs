@@ -1,5 +1,6 @@
 ﻿using DanubiusInfo.B4USApi.Data.Model;
 using DanubiusInfo.B4USApi.DTO;
+using DanubiusInfo.B4USApi.Providers;
 using DanubiusInfo.B4USApi.Providers.Interfaces;
 using DanubiusInfo.B4USApi.Services.Interfaces;
 using DanubiusInfo.B4USApi.UOW;
@@ -12,14 +13,16 @@ namespace DanubiusInfo.B4USApi.Services
         private IServiceProvider serviceProvider;
         private ILocationProvider locationProvider;
         private IUnitOfWork unitOfWork;
+        private IReservationProvider reservationProvider;
         public ServiceAndLocationService(
             IServiceProvider serviceProvider, 
             ILocationProvider locationProvider,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork, IReservationProvider reservationProvider)
         {
             this.unitOfWork = unitOfWork;
             this.serviceProvider = serviceProvider;
             this.locationProvider = locationProvider;
+            this.reservationProvider = reservationProvider;
         }
 
         public bool AddServiceAndLocation(LocationDTO location, ServiceDTO service)
@@ -42,29 +45,11 @@ namespace DanubiusInfo.B4USApi.Services
             return affectedRows > 0;
         }
 
-        public ServicesAndLocationsDTO GetServicesAndLocations()
+        public ReservationAndLocationDTO GetServicesAndLocations()
         {
-            var result = new ServicesAndLocationsDTO();
-            var services = this.serviceProvider.GetAll();
-            var locations = this.locationProvider.GetAll();
-
-            foreach(var service in services)
-            {
-                result.Services.Add(new ServiceDTO
-                {
-                    Id = service.Id
-                });
-            }
-
-            foreach(var location in locations)
-            {
-                result.Locations.Add(new LocationDTO
-                {
-                    Id = location.Id
-                });
-            }
-
-            return result;
+            var reservation = this.reservationProvider.Get(1);
+            var reservationDTO = new ReservationAndLocationDTO { Id = reservation.Id, LocationDTO = new LocationDTO { Id = reservation.Location.Id, Name = reservation.Location.Name } };
+            return reservationDTO;
         }
     }
 }

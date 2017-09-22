@@ -2,9 +2,9 @@
 
 namespace DanubiusInfo.B4USApi.DTO
 {
-    public class ServicesAndLocationsDTO
+    public class ServiceAndLocationsDTO
     {
-        public ServicesAndLocationsDTO()
+        public ServiceAndLocationsDTO()
         {
             this.Locations = new List<LocationDTO>();
             this.Services = new List<ServiceDTO>();

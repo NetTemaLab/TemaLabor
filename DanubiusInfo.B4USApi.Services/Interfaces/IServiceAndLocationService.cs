@@ -4,7 +4,7 @@ namespace DanubiusInfo.B4USApi.Services.Interfaces
 {
     public interface IServiceAndLocationService
     {
-        ServicesAndLocationsDTO GetServicesAndLocations();
+        ReservationAndLocationDTO GetServicesAndLocations();
         bool AddServiceAndLocation(LocationDTO location, ServiceDTO service);
     }
 }

@@ -15,10 +15,12 @@ namespace DanubiusInfo.B4USApi.Data
 
         public DbSet<Location> Locations { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Reservation> Reservation { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             this.MapLocation(modelBuilder.Entity<Location>());
+            this.MapReservation(modelBuilder.Entity<Reservation>());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -33,6 +35,18 @@ namespace DanubiusInfo.B4USApi.Data
                     config.ToTable("servicetoloc");
                     config.MapLeftKey("LocID");
                     config.MapRightKey("ServiceId");
+                });
+            return this;
+        }
+
+        private B4USContext MapReservation(EntityTypeConfiguration<Reservation> configuration)
+        {
+            configuration
+                .HasRequired(reservation => reservation.Location)
+                .WithMany(location => location.Reservation)
+                .Map(config =>
+                {
+                    config.MapKey("Location");
                 });
             return this;
         }
