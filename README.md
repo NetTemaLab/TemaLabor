@@ -1,2 +1,0 @@
-# TemaLabor
-Közös Repo
