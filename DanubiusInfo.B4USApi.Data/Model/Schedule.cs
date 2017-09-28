@@ -14,7 +14,7 @@ namespace DanubiusInfo.B4USApi.Data.Model
         [Key]
         [Column("Id")]
         public int Id { get; set; }
-                
+                  
         [Column("ServiceToLocId")]
         public int ServiceToLocId { get; set; }
 

@@ -51,18 +51,6 @@ namespace DanubiusInfo.B4USApi.Data
             return this;
         }
 
-        private B4USContext MapSchedule(EntityTypeConfiguration<Schedule> configuration)
-        {
-            configuration
-                .HasMany(location => location.Services)
-                .WithMany(service => service.Locations)
-                .Map(config =>
-                {
-                    config.ToTable("servicetoloc");
-                    config.MapLeftKey("LocID");
-                    config.MapRightKey("ServiceId");
-                });
-            return this;
-        }
+        
     }
 }
