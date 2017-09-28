@@ -43,6 +43,7 @@
     <Compile Include="AddServiceAndLocationDTO.cs" />
     <Compile Include="LocationDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation.cs" />
     <Compile Include="ReservationAndLocationDTO.cs" />
     <Compile Include="ScheduleDTO.cs" />
     <Compile Include="ServiceDTO.cs" />
