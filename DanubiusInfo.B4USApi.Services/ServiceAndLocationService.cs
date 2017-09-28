@@ -48,7 +48,10 @@ namespace DanubiusInfo.B4USApi.Services
         public ReservationAndLocationDTO GetServicesAndLocations()
         {
             var reservation = this.reservationProvider.Get(1);
-            var reservationDTO = new ReservationAndLocationDTO { Id = reservation.Id, LocationDTO = new LocationDTO { Id = reservation.Location.Id, Name = reservation.Location.Name } };
+            var reservationDTO = new ReservationAndLocationDTO { Id = reservation.Id, LocationDTO = new LocationDTO { Id = reservation.Location.Id,
+                Name = reservation.Location.Name, Type = reservation.Location.Type, DayStart=reservation.Location.DayStart,
+            DayEnd=reservation.Location.DayEnd, HasFullTimeTable=reservation.Location.HasFullTimeTable,
+            SlotMinutes=reservation.Location.SlotMinutes, ConcurrentNum=reservation.Location.ConcurrentNum} };
             return reservationDTO;
         }
     }
